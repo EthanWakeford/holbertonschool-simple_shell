@@ -13,9 +13,9 @@ int fwe(char **command)
 
 	if (process == 0)
 	{
-		if(execve(command[0], command, env) == -1)
+		if(execve(command[0], command, NULL) == -1)
 		{
-			_printf("failed to execute");
+			printf("failed to execute");
 			exit(100);
 		}
 	}

@@ -8,7 +8,7 @@
 int count(char *buffer)
 {
 	size_t arg_count = 0;
-	int i = 0 ;
+	int i = 0;
 	while (buffer[i])
 	{
 		if (buffer[i] == ' ')
@@ -31,27 +31,26 @@ int count(char *buffer)
 char **token(char *buffer)
 {
 	char **command;
+	char *tok;
 	char *delimeter = " \n";
 	size_t token_count;
 	int i;
 	
-	token_count = count(buffer)
+	token_count = count(buffer);
 
-	command = malloc(sizeof(*command) * (token_count + 1))
+	command = malloc(sizeof(*command) * (token_count + 1));
 	if (command == NULL)
 	{
 		return(NULL);
 	}
 
-	token = strtok(buffer, delimeter);
+	tok = strtok(buffer, delimeter);
 	
-	i = 0;
-	while (token != NULL)
+	for (i = 0; tok != NULL; i++)
 	{
-		command[i] = token;
-		token = strtok(NULL, delimeter);
-		i++;
+		command[i] = tok;
+		tok = strtok(NULL, delimeter);
 	}
 	command[i] = NULL;
-	return(command)
+	return(command);
 }
