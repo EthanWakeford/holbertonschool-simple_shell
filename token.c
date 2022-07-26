@@ -30,17 +30,15 @@ char **token(char *buffer)
 	
 	token_count = count(buffer)
 	argv = malloc(sizeof(*argv) * (token_count + 1))
+	if (argv == NULL)
+	{
+		return(NULL);
+	}
 	token = strtok(buffer, delimeter);
 
 	while (token != NULL)
 	{
 		argv[i] = token;
-		if (argv == NULL)
-		{
-			free(argv);
-			free(buffer);
-			return(NULL);
-		}
 		token = strtok(NULL, delimeter);
 		i++;
 	}
