@@ -8,7 +8,7 @@
 *Return: always zero
 */
 
-int main(int argc, char **argv, char **envp)
+int main(int argc, char **argv)
 {
 	char *buffer = NULL;
 	char **command;
