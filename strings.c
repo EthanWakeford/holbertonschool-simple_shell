@@ -56,7 +56,7 @@ char *stringdup(char *str)
 
 char *stringcpy(char *dest, const char *src)
 {
-	unsigned int len, i;
+	unsigned int i;
 
 	if (dest == NULL || src == NULL)
 		return (NULL);
