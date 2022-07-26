@@ -54,6 +54,7 @@ void run(char *buffer, char **envp)
 	if (check == -1)
 	{
 		printf("invalid command\n");
+		free(command);
 		return;
 	}
 	fwe(command, envp);
