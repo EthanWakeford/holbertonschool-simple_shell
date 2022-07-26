@@ -12,6 +12,9 @@
 
 extern char **environ;
 
+char **token(char *buffer);
+int count(char *buffer);
+int fwe(char **command);
 int stringlen(char *str);
 char *stringdup(char *str);
 char *stringcpy(char *dest, const char *src);

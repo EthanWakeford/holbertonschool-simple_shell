@@ -1,7 +1,9 @@
 #include "main.h"
 /**
+ * count - counts number of tokenized arguments in string.
+ * @buffer: untokenized input string.
  *
- *
+ * Return: argument count.
  */
 int count(char *buffer)
 {
@@ -13,35 +15,43 @@ int count(char *buffer)
 			i++;
 		else
 		{
-			count++;
+			arg_count++;
 			while (buffer[i] && buffer[i] != ' ')
 				i++;
 		}
 	}
-	return(count);
+	return(arg_count);
 }
+/**
+ * token - split a string into idividual arguments.
+ * @buffer: input string.
+ * 
+ * Return: tokenized arguments.
+ */
 char **token(char *buffer)
 {
-	char **argv;
-	char *token;
+	char **command;
 	char *delimeter = " \n";
 	size_t token_count;
-	int i = 0;
+	int i;
 	
 	token_count = count(buffer)
-	argv = malloc(sizeof(*argv) * (token_count + 1))
-	if (argv == NULL)
+
+	command = malloc(sizeof(*command) * (token_count + 1))
+	if (command == NULL)
 	{
 		return(NULL);
 	}
-	token = strtok(buffer, delimeter);
 
+	token = strtok(buffer, delimeter);
+	
+	i = 0;
 	while (token != NULL)
 	{
-		argv[i] = token;
+		command[i] = token;
 		token = strtok(NULL, delimeter);
 		i++;
 	}
-	argv[i] = NULL;
-	return(argv)
+	command[i] = NULL;
+	return(command)
 }

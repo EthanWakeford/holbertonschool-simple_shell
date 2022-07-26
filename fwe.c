@@ -1,9 +1,11 @@
 #include "main.h"
 /**
+ * fwe - fork, wait, execute.
+ * @command: input command.
  *
- *
+ * Return: 0 on success.
  */
-int fwe(char **argv)
+int fwe(char **command)
 {
 	pid_t process;
 
@@ -11,7 +13,7 @@ int fwe(char **argv)
 
 	if (process == 0)
 	{
-		if(execve(arv[0], argv, env) == -1)
+		if(execve(command[0], command, env) == -1)
 		{
 			_printf("failed to execute");
 			exit(100);
