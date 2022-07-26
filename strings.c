@@ -89,3 +89,22 @@ int stringcmp(char *s1, char *s2)
 		return (-1);
 	return (0);
 }
+
+/**
+*stringcat - concats src to dest
+*@dest: dest string
+*@src: source string
+*Return: dest
+*/
+
+char *stringcat(char *dest, char *src)
+{
+	int s, d = stringlen(dest) + 1;
+
+	for (s = 0; src[s] != '\0'; s++, d++)
+	{
+		dest[d] = src[s];
+	}
+	dest[d] = '\0';
+	return (dest);
+}

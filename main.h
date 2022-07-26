@@ -16,6 +16,7 @@ int stringlen(char *str);
 char *stringdup(char *str);
 char *stringcpy(char *dest, const char *src);
 int stringcmp(char *s1, char *s2);
+char *stringcat(char *dest, char *src);
 char *get_env(const char *name);
 char *get_path(char *command);
 char *find_path(char *path_tok, char *command);
