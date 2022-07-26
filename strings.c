@@ -1,7 +1,8 @@
 #include "main.h"
 
 /**
-*stringlen - returns length of string
+*stringlen - returns length of string     Holberton hates us and we are too
+*poor for standard lib
 *@str: string to get length of
 *Return: length
 */
@@ -14,7 +15,7 @@ int stringlen(char *str)
 		return (0);
 	while (str[index] != '\0')
 	{
-		inddex++;
+		index++;
 	}
 	return (index);
 }
@@ -66,4 +67,25 @@ char *stringcpy(char *dest, const char *src)
 	}
 	dest[i] = '\0';
 	return (dest);
+}
+
+/**
+*stringcmp - compares 2 strings    Not the same as normal strcmp
+*@s1: string 1 to compare
+*@s2: string 2 to compate
+*Return: 0 if same, -1 otherwise
+*/
+
+int stringcmp(char *s1, char *s2)
+{
+	int i;
+
+	for (i = 0; s1[i] != '\0'; i++)
+	{
+		if (s1[i] != s2[i])
+			return (-1);
+	}
+	if (s1[i] != s2[i])
+		return (-1);
+	return (0);
 }
