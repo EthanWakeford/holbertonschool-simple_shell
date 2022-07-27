@@ -10,12 +10,14 @@
 int check_command(char **command)
 {
 	struct stat st;
+	char *cmd_check;
 
 	if (stat(command[0], &st) == -1)
 	{
-		command[0] = get_path(command[0]);
-		if (command[0] == NULL)
+		cmd_check = get_path(command[0]);
+		if (cmd_check == NULL)
 			return (-1);
+		command[0] = cmd_check;
 		return (0);
 	}
 	return (1);

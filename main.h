@@ -12,7 +12,7 @@
 
 extern char **environ;
 
-void run(char *buffer, char **envp);
+void run(int run_count, char *buffer, char **argv, char **envp);
 char **token(char *buffer);
 int count(char *buffer);
 int fwe(char **command, char **envp);
