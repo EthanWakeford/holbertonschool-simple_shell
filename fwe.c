@@ -2,10 +2,10 @@
 /**
  * fwe - fork, wait, execute.
  * @command: input command.
- *
+ * @envp: environment pointer
  * Return: 0 on success.
  */
-int fwe(char **command)
+int fwe(char **command, char **envp)
 {
 	pid_t process;
 
@@ -13,14 +13,14 @@ int fwe(char **command)
 
 	if (process == 0)
 	{
-		if(execve(command[0], command, NULL) == -1)
+		if (execve(command[0], command, envp) == -1)
 		{
 			printf("failed to execute");
 			exit(100);
 		}
 	}
-	else 
+	else
 		wait(NULL);
 
-	return(0);
+	return (0);
 }
