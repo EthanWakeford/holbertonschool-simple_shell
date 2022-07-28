@@ -35,8 +35,11 @@ int main(int argc, char **argv, char **envp)
 				printf("\n");
 				break;
 			}
-			if (strcmp(buffer, "exit\n") == 0)
-				break;
+			if (stringcmp(buffer, "exit\n") == 0)
+			{
+				free(buffer);
+				exit(0);
+			}
 			if (buffer[0] == '\n')
 				continue;
 			run_count++;
@@ -49,7 +52,9 @@ int main(int argc, char **argv, char **envp)
 
 /**
 *run - runs the shell one time through
+*@run_count: count of times things have been entered
 *@buffer: input from user or file
+*@argv: argument vector of call to function
 *@envp: environment pointer
 */
 
@@ -72,5 +77,4 @@ void run(int run_count, char *buffer, char **argv, char **envp)
 	if (check == 0)
 		free(command[0]);
 	free(command);
-	return;
 }
