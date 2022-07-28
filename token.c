@@ -32,7 +32,7 @@ char **token(char *buffer)
 {
 	char **command;
 	char *tok;
-	char *delimeter = " \n";
+	char *delimeter = " \t\n";
 	size_t token_count;
 	int i;
 
