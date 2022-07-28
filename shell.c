@@ -36,13 +36,13 @@ int main(int argc, char **argv, char **envp)
 				printf("\n");
 				break;
 			}
-			if (stringcmp(buffer, "exit\n") == 0)
+			if (stringcmp(strtok(buffer, " \t"), "\n") == 0)
+				continue;
+			if (stringcmp(strtok(buffer, " \n\t"), "exit") == 0)
 			{
 				free(buffer);
 				return(0);
 			}
-			if (buffer[0] == '\n')
-				continue;
 			run_count++;
 			run(run_count, buffer, argv, envp);
 		}
