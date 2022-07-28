@@ -24,7 +24,6 @@ char *get_env(const char *name)
 			if (name[j] == '\0')
 			/*if null byte then match is found*/
 			{
-				printf("%s\n", environ[i]);
 				/*return string with name removed, (ex. just path)*/
 				return (environ[i] + (j + 1));
 			}
