@@ -38,7 +38,7 @@ int main(int argc, char **argv, char **envp)
 			if (stringcmp(buffer, "exit\n") == 0)
 			{
 				free(buffer);
-				exit(0);
+				return(0);
 			}
 			if (stringcmp(buffer, "env\n") == 0)
 			{
