@@ -24,6 +24,7 @@ char *get_env(const char *name)
 			if (name[j] == '\0')
 			/*if null byte then match is found*/
 			{
+				printf("%s\n", environ[i]);
 				/*return string with name removed, (ex. just path)*/
 				return (environ[i] + (j + 1));
 			}
@@ -44,7 +45,7 @@ char *get_path(char *command)
 	char *path, *path_tok, *buffer;
 
 	/*gets path and splits into tokens*/
-	path = stringdup(get_env("PATH"));
+	path = strdup(get_env("PATH"));
 	if (path == NULL)
 		return (NULL);
 	path_tok = strtok(path, ":");
