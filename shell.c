@@ -70,7 +70,8 @@ void run(int run_count, char *buffer, char **argv, char **envp)
 	check = check_command(command);
 	if (check == -1)
 	{
-		_printf("%s: %d: %s: not found\n", argv[0], run_count, command[0]);
+		_printf("%s: %d: %s: ", argv[0], run_count, command[0]);
+		perror("");
 		free(command);
 		return;
 	}
