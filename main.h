@@ -25,6 +25,5 @@ char *get_env(const char *name);
 char *get_path(char *command);
 char *find_path(char *path_tok, char *command);
 int check_command(char **command);
-int print_env(char **envp);
 
 #endif

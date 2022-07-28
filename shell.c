@@ -1,4 +1,5 @@
 #include "main.h"
+#include "printf.h"
 
 /**
 *main - a simple shell
@@ -29,7 +30,7 @@ int main(int argc, char **argv, char **envp)
 	{
 		while (1)
 		{
-			printf("($) ");
+			_printf("($) ");
 			if (getline(&buffer, &bufsize, stdin) == EOF)
 			{
 				printf("\n");
@@ -39,11 +40,6 @@ int main(int argc, char **argv, char **envp)
 			{
 				free(buffer);
 				exit(0);
-			}
-			if (stringcmp(buffer, "env\n") == 0)
-			{
-				print_env(envp);
-				continue;
 			}
 			if (buffer[0] == '\n')
 				continue;
@@ -74,7 +70,7 @@ void run(int run_count, char *buffer, char **argv, char **envp)
 	check = check_command(command);
 	if (check == -1)
 	{
-		printf("%s: %d: %s: not found\n", argv[0], run_count, command[0]);
+		_printf("%s: %d: %s: not found\n", argv[0], run_count, command[0]);
 		free(command);
 		return;
 	}
