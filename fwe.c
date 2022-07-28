@@ -11,6 +11,11 @@ int fwe(char **command, char **envp)
 
 	process = fork();
 
+	if (process == -1)
+	{
+		perror("Error");
+		return (-1);
+	}
 	if (process == 0)
 	{
 		if (execve(command[0], command, envp) == -1)

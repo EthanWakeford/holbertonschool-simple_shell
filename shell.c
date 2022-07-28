@@ -40,6 +40,11 @@ int main(int argc, char **argv, char **envp)
 				free(buffer);
 				exit(0);
 			}
+			if (stringcmp(buffer, "env\n") == 0)
+			{
+				print_env(envp);
+				continue;
+			}
 			if (buffer[0] == '\n')
 				continue;
 			run_count++;
