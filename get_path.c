@@ -45,7 +45,7 @@ char *get_path(char *command)
 	char *path, *path_tok, *buffer;
 
 	/*gets path and splits into tokens*/
-	path = strdup(get_env("PATH"));
+	path = stringdup(get_env("PATH"));
 	if (path == NULL)
 		return (NULL);
 	path_tok = strtok(path, ":");
