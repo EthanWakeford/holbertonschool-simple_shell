@@ -44,6 +44,7 @@ char *stringdup(char *str)
 	{
 		new_str[index] = str[index];
 	}
+	new_str[index] = '\0';
 	return (new_str);
 }
 
