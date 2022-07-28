@@ -41,6 +41,7 @@ char **token(char *buffer)
 	command = malloc(sizeof(*command) * (token_count + 1));
 	if (command == NULL)
 	{
+		perror("malloc failed");
 		return (NULL);
 	}
 

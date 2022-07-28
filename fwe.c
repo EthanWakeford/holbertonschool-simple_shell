@@ -20,8 +20,8 @@ int fwe(char **command, char **envp)
 	{
 		if (execve(command[0], command, envp) == -1)
 		{
-			printf("failed to execute");
-			exit(100);
+			perror("execve fail");
+			exit(0);
 		}
 	}
 	else
