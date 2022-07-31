@@ -41,7 +41,7 @@ int main(int argc, char **argv, char **envp)
 			if (stringcmp(strtok(buffer, " \n\t"), "exit") == 0)
 			{
 				free(buffer);
-				return (0);
+				exit(errno);
 			}
 			run_count++;
 			run(run_count, buffer, argv, envp);
