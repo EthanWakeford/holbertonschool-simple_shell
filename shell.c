@@ -1,5 +1,9 @@
 #include "main.h"
 #include "printf.h"
+# define R_COUNT do { \
+run_count++; \
+run(run_count, buffer, argv, envp); \
+} while (0)
 
 /**
 *main - a simple shell
@@ -14,20 +18,15 @@ int main(int argc, char **argv, char **envp)
 	char *buffer = NULL;
 	size_t bufsize;
 	int run_count = 0;
-	int i;
+	int i = 0;
 
 	(void)argc;
-	
+
 	/*checks for interactive vs non-interactive mode, runs accordingly*/
 	if (isatty(STDIN_FILENO) != 1)
 	{
 		while (getline(&buffer, &bufsize, stdin) != EOF)
-		{
-			if (*buffer = '\n')
-				continue;
-			run_count++;
-			run(run_count, buffer, argv, envp);
-		}
+			R_COUNT;
 	}
 	else
 	{
@@ -46,8 +45,7 @@ int main(int argc, char **argv, char **envp)
 				free(buffer);
 				exit(errno);
 			}
-			run_count++;
-			run(run_count, buffer, argv, envp);
+			R_COUNT;
 		}
 	}
 	free(buffer);
@@ -66,16 +64,18 @@ void run(int run_count, char *buffer, char **argv, char **envp)
 {
 	char **command;
 	int check, i;
+	char *tmp;
 
-	for (i = 0; buffer[i]; i++)
+	for (i = 0; tmp[i]; i++)
 	{
-		if (isspace(buffer[i]) == 0)
-			return;
+		if (isspace(tmp[i]) == 0)
+			break;
 	}
+
 	command = token(buffer);
 	if (command == NULL)
 		return;
-	
+
 	check = check_command(command);
 	if (check == -1)
 	{
