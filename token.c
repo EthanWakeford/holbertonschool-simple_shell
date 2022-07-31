@@ -12,12 +12,12 @@ int count(char *buffer)
 
 	while (buffer[i])
 	{
-		if (buffer[i] == ' ')
+		if (buffer[i] == ' ' || buffer[i] == '\t')
 			i++;
 		else
 		{
 			arg_count++;
-			while (buffer[i] && buffer[i] != ' ')
+			while ((buffer[i] && buffer[i] != ' ') && buffer[i] != '\t')
 				i++;
 		}
 	}
