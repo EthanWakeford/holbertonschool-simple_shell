@@ -18,7 +18,6 @@ int main(int argc, char **argv, char **envp)
 	char *buffer = NULL;
 	size_t bufsize;
 	int run_count = 0;
-	int i = 0;
 
 	(void)argc;
 
@@ -66,6 +65,7 @@ void run(int run_count, char *buffer, char **argv, char **envp)
 	int check, i;
 	char *tmp;
 
+	tmp = buffer;
 	for (i = 0; tmp[i]; i++)
 	{
 		if (isspace(tmp[i]) == 0)
