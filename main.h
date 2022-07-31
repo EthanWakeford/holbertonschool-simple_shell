@@ -10,6 +10,7 @@
 #include <string.h>
 #include <dirent.h>
 #include <errno.h>
+#include <ctype.h>
 
 extern char **environ;
 
