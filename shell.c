@@ -23,6 +23,8 @@ int main(int argc, char **argv, char **envp)
 	{
 		while (getline(&buffer, &bufsize, stdin) != EOF)
 		{
+			if (*buffer = '\n')
+				continue;
 			run_count++;
 			run(run_count, buffer, argv, envp);
 		}
