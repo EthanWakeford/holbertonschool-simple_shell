@@ -14,6 +14,7 @@ int main(int argc, char **argv, char **envp)
 	char *buffer = NULL;
 	size_t bufsize;
 	int run_count = 0;
+	int i;
 
 	(void)argc;
 
@@ -35,6 +36,12 @@ int main(int argc, char **argv, char **envp)
 			{
 				printf("\n");
 				break;
+			}
+			
+			for (i = 0; buffer[i]; i++)
+			{
+				if (isspace(buffer[i]) == 0)
+					break;
 			}
 			if (stringcmp(strtok(buffer, " \t"), "\n") == 0)
 				continue;
