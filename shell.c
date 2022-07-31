@@ -17,7 +17,7 @@ int main(int argc, char **argv, char **envp)
 	int i;
 
 	(void)argc;
-
+	
 	/*checks for interactive vs non-interactive mode, runs accordingly*/
 	if (isatty(STDIN_FILENO) != 1)
 	{
@@ -36,12 +36,6 @@ int main(int argc, char **argv, char **envp)
 			{
 				printf("\n");
 				break;
-			}
-			
-			for (i = 0; buffer[i]; i++)
-			{
-				if (isspace(buffer[i]) == 0)
-					break;
 			}
 			if (stringcmp(strtok(buffer, " \t"), "\n") == 0)
 				continue;
@@ -69,11 +63,17 @@ int main(int argc, char **argv, char **envp)
 void run(int run_count, char *buffer, char **argv, char **envp)
 {
 	char **command;
-	int check;
+	int check, i;
 
+	for (i = 0; buffer[i]; i++)
+	{
+		if (isspace(buffer[i]) == 0)
+			return;
+	}
 	command = token(buffer);
 	if (command == NULL)
 		return;
+	
 	check = check_command(command);
 	if (check == -1)
 	{
